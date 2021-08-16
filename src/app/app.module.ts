@@ -6,12 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProfileComponent } from './pages/components/profile/profile.component';
 import { ProfilesComponent } from './pages/components/profiles/profiles.component';
 import { SharedModule } from './shared/shared.module';
 import { ProfileModalComponent } from './pages/components/profile-modal/profile-modal.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { TokenInterceptor } from './token-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,9 @@ import { FilterPipe } from './pipes/filter.pipe';
   ],
   exports:[
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

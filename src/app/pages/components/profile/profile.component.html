@@ -56,7 +56,7 @@
                     <label>Dob</label>
                     <div class="input-group">
                       <div class="input-group-text" (click)="d.toggle()" id="btnGroupAddon2"></div>
-                      <input placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" class="form-control" formControlName="dob" type="text">
+                      <input placeholder="yyyy-mm-dd" (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker" class="form-control" formControlName="dob" type="text">
                     </div>
                     <span class="text-danger" *ngIf="profileForm.controls['dob'].touched && profileForm.controls['dob'].hasError('required')">
                       Dob is required! </span>

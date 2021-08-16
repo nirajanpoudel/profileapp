@@ -14,6 +14,7 @@ import { ProfileModalComponent } from '../profile-modal/profile-modal.component'
 export class ProfilesComponent implements OnInit {
   public profiles$: Observable<Profile[]>;
   public errorMsg: string = '';
+  public defaultProfile:any = '/assets/images/default.jpg';
   filteredString: string = '';
   public search:any;
   constructor(

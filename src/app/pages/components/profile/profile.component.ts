@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   public model: NgbDateStruct;
   public educationBackgroundList: FormArray;
   public errorMsg: string = '';
-  public defaultProfile:any = 'https://cdn.wallpapersafari.com/13/22/kSCTAd.jpg';
+  public defaultProfile:any = '/assets/images/default.jpg';
   public contactModes: any = ['email', 'phone', 'none']
   get educationBackgroundFormGroup() {
     return this.profileForm.get('educationBackgrounds') as FormArray;
@@ -45,9 +45,6 @@ export class ProfileComponent implements OnInit {
     
   }
 
-
-
-  // contact formgroup
   createEducationBackground(): FormGroup {
     return this.fb.group({
       name: [null, Validators.compose([Validators.required])], // i.e. Home, Office
@@ -70,11 +67,10 @@ export class ProfileComponent implements OnInit {
   // method triggered when form is submitted
   submit() {
     console.log(this.profileForm.value);
-    // const dob = this.profileForm.
-    
+   
     this.profileService.save(this.profileForm.value).subscribe(data=>{
       console.log(data)
-      this.router.navigate(['profiles'])
+       this.router.navigate(['profiles'])
     },error=>{
       console.warn(error)
       this.errorMsg = `Error: ${error.error.message}`;

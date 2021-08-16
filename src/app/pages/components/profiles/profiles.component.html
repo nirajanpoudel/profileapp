@@ -16,12 +16,13 @@
                     </div>
                     <ng-container *ngIf="(profiles$|async) as profiles">
                         <ng-container *ngIf="profiles.length; else noItems">
-                            <table class="o">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Avatar</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -31,6 +32,19 @@
                                     <td>{{profile.name}}</td>
                                     <td>{{profile.email}}</td>
                                     <td>{{profile.phone}}</td>
+                                    <td>
+
+                                        <div *ngIf="profile.avatar">
+                                            <img [src]="profile.avatar" width="100" alt=""> 
+                                        </div>
+                                        <div *ngIf="!profile.avatar">
+                                            <img [src]="defaultProfile" width="100" alt=""> 
+                                        </div>
+
+                                        
+                                       
+                                     
+                                    </td>
                                     <td>
                                         
                                         <button class="btn btn-success m-1" type="submit" (click)="detailView(profile)">
