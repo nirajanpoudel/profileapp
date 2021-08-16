@@ -1,0 +1,125 @@
+<div class="container p-3">
+    <div class="row">
+      <div class="col-12">
+       
+        <form [formGroup]="profileForm" (submit)="submit()">
+          <div class="card">
+            <div class="card-header">User Profile</div>
+            
+            <div class="card-body">
+             
+              <app-error-message [errorMessage]="errorMsg"></app-error-message>
+              <div class="row">
+                <div class="form-group col-6">
+                  <label>Name</label>
+                  <input class="form-control" formControlName="name" type="text">
+                  <span class="text-danger" *ngIf="profileForm.controls['name'].touched && profileForm.controls['name'].hasError('required')">
+                    Name is required! </span>
+                </div>
+                <div class="form-group col-6">
+                    <label>Email</label>
+                    <input class="form-control" formControlName="email" type="text">
+                    <span class="text-danger" *ngIf="profileForm.controls['email'].touched && profileForm.controls['email'].hasError('required')">
+                      Email is required! </span>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-6">
+                  <label>Phone</label>
+                  <input class="form-control" formControlName="phone" type="text">
+                  <span class="text-danger" *ngIf="profileForm.controls['phone'].touched && profileForm.controls['phone'].hasError('required')">
+                    phone is required! </span>
+                </div>
+                <div class="form-group col-6">
+                    <label>Nationality</label>
+                    <input class="form-control" formControlName="nationality" type="text">
+                    <span class="text-danger" *ngIf="profileForm.controls['nationality'].touched && profileForm.controls['nationality'].hasError('required')">
+                        nationality is required! </span>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-6">
+                  <label>Gender</label>
+                  <div>
+                    <input id="male" type="radio" value="male" name="gender" formControlName="gender">
+                    <label for="male">Male</label>
+                 </div>
+              
+                 <div>
+                    <input id="female" type="radio" value="female" name="gender" formControlName="gender">
+                    <label for="female">Female</label>
+                 </div>
+                  <span class="text-danger" *ngIf="profileForm.controls['gender'].touched && profileForm.controls['gender'].hasError('required')">
+                    gender is required! </span>
+                </div>
+                <div class="form-group col-6">
+                    <label>Dob</label>
+                    <div class="input-group">
+                      <div class="input-group-text" (click)="d.toggle()" id="btnGroupAddon2"></div>
+                      <input placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" class="form-control" formControlName="dob" type="text">
+                    </div>
+                    <span class="text-danger" *ngIf="profileForm.controls['dob'].touched && profileForm.controls['dob'].hasError('required')">
+                      Dob is required! </span>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-3">
+                  
+                    <label>Avatar</label>
+                    <input class="form-control"  (change)="handleFileInput($event)" type="file">
+                    <span class="text-danger" *ngIf="profileForm.controls['gender'].touched && profileForm.controls['gender'].hasError('required')">
+                      Avatar is required! </span>
+                </div>
+                  <div class="form-group col-3">
+                    <img width="100" [src]="defaultProfile" alt="">
+                  </div>
+                
+                <div class="form-group col-6">
+                    <label>Contact Mode</label>
+                    <select class="form-control"  formControlName="contactMode">
+                        <option value="" disabled>Preferred Contact Mode</option>
+                        <option *ngFor="let mode of contactModes" [ngValue]="mode">{{mode}}</option>
+                     </select>
+                    <span class="text-danger" *ngIf="profileForm.controls['gender'].touched && profileForm.controls['gender'].hasError('required')">
+                      Avatar is required! </span>
+                  </div>
+                
+            </div>
+            </div>
+            
+            <div class="card-header">Education Information</div>
+            <div class="card-body" formArrayName="educationBackgrounds">
+              <div class="row">
+                <div class="col-6" *ngFor="let contact of educationBackgroundFormGroup.controls; let i = index;">
+                  <div [formGroupName]="i" class="row">
+                    
+                    <div class="form-group col-6">
+                      <label>Name</label>
+                      <input class="form-control" formControlName="name" type="text">
+                      
+                    </div>
+  
+                    <div class="form-group col-6">
+                      <label>Label.</label>
+                      <input class="form-control" formControlName="label" type="text">
+                      
+                    </div>
+                    <div class="form-group col-12 text-right">
+                      <button class="btn btn-danger" type="button" (click)="removeEducationBackground(i)"> Remove </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="col-12">
+                <button class="btn btn-primary m-1" type="button" (click)="addEducationBackground()"> Add Education </button>
+                
+                <button class="btn btn-success m-1"  type="submit"> Save User Profile </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

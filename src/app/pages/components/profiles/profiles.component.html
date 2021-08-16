@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-header">User Profiles</div>
+                <div class="card-body">
+
+                    <app-error-message [errorMessage]="errorMsg"></app-error-message>
+                    <div class="input-group">
+                        <div class="input-group-text" id="btnGroupAddon2">
+                            <a class="btn btn-success" routerLink="/profile">Add New Profile</a>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="filteredString" />
+                        
+                    </div>
+                    <ng-container *ngIf="(profiles$|async) as profiles">
+                        <ng-container *ngIf="profiles.length; else noItems">
+                            <table class="o">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tr *ngFor="let profile of profiles|filter:filteredString">
+                                    <td>{{profile.name}}</td>
+                                    <td>{{profile.email}}</td>
+                                    <td>{{profile.phone}}</td>
+                                    <td>
+                                        
+                                        <button class="btn btn-success m-1" type="submit" (click)="detailView(profile)">
+                                            Detail </button>
+
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                        </ng-container>
+                        <ng-template #noItems>No Record Found!</ng-template>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

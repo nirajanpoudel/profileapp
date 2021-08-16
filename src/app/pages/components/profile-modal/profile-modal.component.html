@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h4 class="modal-title">Detail {{profile.name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Hello, {{profile.name}}!</p>
+    <table class="td">
+        <tr>
+            <td>Name</td>
+            <td>{{profile.name}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{profile.email}}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{profile.phone}}</td>
+        </tr>
+        <tr>
+            <td>gender</td>
+            <td>{{profile.gender}}</td>
+        </tr>
+        <tr>
+            <td>Dob</td>
+            <td>{{profile.dob}}</td>
+        </tr>
+        <tr>
+            <td>Nationality</td>
+            <td>{{profile.nationality}}</td>
+        </tr>
+        <tr>
+            <td>Contactmode</td>
+            <td>{{profile.contactmode}}</td>
+        </tr>
+        <tr>
+            <td>Education Background</td>
+            <td>{{profile.education}}</td>
+        </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>

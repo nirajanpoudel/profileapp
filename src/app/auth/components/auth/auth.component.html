@@ -1,0 +1,27 @@
+<div id="card">
+    <h3 class="text-center text-white pt-5">Login form</h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <app-error-message [errorMessage]="errorMessage"></app-error-message>
+                    <form [formGroup]="authForm" id="login-form" class="form" >
+                        <h3 class="text-center ">Login</h3>
+                        <div class="form-group">
+                            <label for="username">Email:</label><br>
+                            <input type="text" name="email" formControlName="email" id="email" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label><br>
+                            <input type="text" name="password" formControlName="password" id="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input  (click)="login()" type="submit" name="submit" class="btn btn-primary btn-block" value="Login">
+                        </div>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
